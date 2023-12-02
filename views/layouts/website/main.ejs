@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/home/global.css" />
+    <link rel="stylesheet" href="/home/header.css" />
+    <link rel="stylesheet" href="/home/style.css" />
+    <link rel="stylesheet" href="/home/post.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.min.css"
+      rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <%-style%>
+    <title>دیوار</title>
+  </head>
+  <body dir="rtl">
+    <section class="grid">
+      <%-include("./header.ejs")%> <%-include("./aside.ejs")%>
+
+      <main>
+        <div class="main-button">
+          <a href="#">
+            <img src="/home/img/suitcase.svg" alt="" />
+            <span>با دیوار، بگرد دنبال کار</span>
+          </a>
+        </div>
+        <h1 class="main-title">دیوار تهران:‌ انواع آگهی‌ها و خدمات در تهران</h1>
+        <div class="main-grid-card"><%-body%></div>
+      </main>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js"></script>
+    <%-script%>
+  </body>
+</html>

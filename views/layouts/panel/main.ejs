@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>دیوار</title>
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="/assets/images/logos/divar.svg" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="stylesheet" href="/dist/css/mapp.min.css" />
+    <link rel="stylesheet" href="/dist/css/fa/style.css" />
+  </head>
+
+  <body>
+    <!--  Body Wrapper -->
+    <div
+      class="page-wrapper"
+      id="main-wrapper"
+      data-layout="vertical"
+      data-navbarbg="skin6"
+      data-sidebartype="full"
+      data-sidebar-position="fixed"
+      data-header-position="fixed">
+      <!-- Sidebar Start -->
+      <%-include("./sidebar.ejs")%>
+      <!--  Sidebar End -->
+      <!--  Main wrapper -->
+      <div class="body-wrapper">
+        <!--  Header Start -->
+        <%-include("./header.ejs")%>
+        <!--  Header End -->
+        <div class="container-fluid">
+          <!--  Row 1 -->
+          <%-body%>
+        </div>
+      </div>
+    </div>
+    <!-- <script
+      type="text/javascript"
+      src="https://cdn.map.ir/web-sdk/1.4.2/js/jquery-3.2.1.min.js"></script> -->
+    <!-- <script src="/assets/libs/jquery/dist/jquery.min.js"></script> -->
+    <script type="text/javascript" src="/dist/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/dist/js/mapp.env.js"></script>
+    <script type="text/javascript" src="/dist/js/mapp.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        const app = new Mapp({
+          element: "#map-element",
+          presets: {
+            latlng: {
+              lat: 35,
+              lng: 51,
+            },
+            zoom: 5,
+          },
+          apiKey:
+            "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjljMDQ5OTZiNzNkMzQ1YjI4YTM4NGQ4ZjQwMWZiYzc4N2ZhMTY0YjAxMTdjODZmYjQ3YjhkN2JkMGFhOThlMmUyY2MzMjZlOGI3ZTg0NzZkIn0.eyJhdWQiOiIyNDkxOSIsImp0aSI6IjljMDQ5OTZiNzNkMzQ1YjI4YTM4NGQ4ZjQwMWZiYzc4N2ZhMTY0YjAxMTdjODZmYjQ3YjhkN2JkMGFhOThlMmUyY2MzMjZlOGI3ZTg0NzZkIiwiaWF0IjoxNjk5OTQ2MDg5LCJuYmYiOjE2OTk5NDYwODksImV4cCI6MTcwMjQ1MTY4OSwic3ViIjoiIiwic2NvcGVzIjpbImJhc2ljIl19.WPssO-KCDS3I9LaJko0vI-SttHlDra6ELqSmyjOLM3_Sa0SadDYLc3EwBvjAs3UYIpV2h3EqM1bcUiNyXFAcp6qee1Mh_Q2iIMCTE4D24rFFs8KomjOdhtT5Fh6_7bq59F5P1iAh1oUW-1xsChoupyDtqcItvR7mvjqyzzmtVRbzHF3dAD3L56oAj3c0b9d2a0RKBNwk6wYhP2dqcwOvonYdxvX-RH5mIa0caAiCZiP6hML6wMumJ12XbFUPJlJyWwntl0JtcIyGtfPD1qMpBb1pbhp3R81TqqQ4IF-kHGuVlS3nmbF3fWzNI3bSyoL05bN7LUdJKVxoVHOJwnbFxw",
+          gestureHandling: true,
+          gestureHandlingOptions: {
+            duration: 1200,
+            text: {
+              touch: "نقشه را با دو انگشت حرکت دهید",
+              scroll: "برای بزرگنمایی نقشه از ctrl + scroll  استفاده کنید",
+              scrollMac:
+                "برای بزرگنمایی نقشه از \u2318  + scroll  استفاده کنید",
+            },
+          },
+        });
+        app.addLayers();
+        app.map.on("click", function (e) {
+          app.addMarker({
+            name: "advanced-marker",
+            latlng: {
+              lat: e.latlng.lat,
+              lng: e.latlng.lng,
+            },
+            icon: app.icons.red,
+            popup: false,
+          });
+          let { lat, lng } = e.latlng;
+          document.getElementById("lat").value = lat;
+          document.getElementById("lng").value = lng;
+        });
+      });
+    </script>
+    <script src="/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/sidebarmenu.js"></script>
+    <script src="/assets/js/app.min.js"></script>
+    <script src="/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="/assets/libs/simplebar/dist/simplebar.js"></script>
+    <script src="/assets/js/dashboard.js"></script>
+  </body>
+</html>

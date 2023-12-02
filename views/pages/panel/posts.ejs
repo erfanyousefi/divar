@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-lg-12 d-flex align-items-stretch">
+    <div class="card w-100">
+      <div class="card-body p-4">
+        <%if(success_message){%>
+        <div class="row">
+          <p class="alert alert-info"><%=success_message%></p>
+        </div>
+        <%}%>
+        <div class="row">
+          <h5 class="card-title fw-semibold mb-4 col-lg-6">آگهی های من</h5>
+          <span class="col-lg-6 text-left">
+            <div class="w-100 text-left" style="text-align: left">
+              <a href="/post/create" class="btn btn-info">انتشار اگهی جدید</a>
+            </div>
+          </span>
+        </div>
+        <div class="table-responsive">
+          <table class="table text-nowrap mb-0 align-middle">
+            <thead class="text-dark fs-4">
+              <tr>
+                <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">شناسه</h6>
+                </th>
+                <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">عنوان</h6>
+                </th>
+                <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">توضیحات</h6>
+                </th>
+                <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">تاریخ انتشار</h6>
+                </th>
+                <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">مدیریت</h6>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <%if(count === 0){%>
+              <tr>
+                <td colspan="5">
+                  <p class="alert alert-warning text-center">
+                    شما هیچ آگهی را ثبت نکرده اید
+                  </p>
+                </td>
+              </tr>
+              <%}else{%> <%posts.forEach(post => {%>
+              <tr>
+                <td><%=post._id%></td>
+                <td><%=post.title%></td>
+                <td><%=post.content%></td>
+                <td>
+                  <%=moment(post.createdAt).locale("fa").format(`jDD jMMMM
+                  jYYYY`)%>
+                </td>
+                <td>
+                  <form
+                    action="/post/delete/<%=post._id%>?_method=delete"
+                    method="post"
+                    class="d-inline">
+                    <button type="submit" class="btn btn-danger">حذف</button>
+                  </form>
+                  <a href="/post/<%=post._id%>" class="btn btn-success"
+                    >مشاهده</a
+                  >
+                </td>
+              </tr>
+              <%})%> <%}%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

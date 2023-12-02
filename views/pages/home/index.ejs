@@ -1,0 +1,20 @@
+<div class="main-gird-posts">
+  <div class="main-post">
+    <%for(let post of posts){%>
+    <a href="/post/<%=post._id%>" class="post-link">
+      <article>
+        <div class="main-post-detail">
+          <h2 class="main-post-title"><%=post.title%></h2>
+          <div class="main-post-price"><%=post.amount%> تومان</div>
+          <div class="main-post-time">
+            <%=moment(post.createdAt).locale("fa").format(`jDD jMMMM HH:mm`)%>
+          </div>
+        </div>
+        <div class="main-post-thumbnail">
+          <img src="/<%=post.images?.[0]%>" alt="" />
+        </div>
+      </article>
+    </a>
+    <%}%>
+  </div>
+</div>
