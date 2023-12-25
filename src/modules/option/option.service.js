@@ -44,7 +44,7 @@ class OptionService {
             optionDto.key = slugify(optionDto.key, {trim: true, replacement: "_", lower: true});
             let categoryId = existOption.category;
             if(optionDto.category) categoryId = optionDto.category;
-            await this.alreadyExistByCategoryAndKey(optionDto.key, categoryId)
+            await this.alreadyExistByCategoryAndKey(optionDto.key, categoryId, id)
         }
         if(optionDto?.enum && typeof optionDto.enum === "string") {
             optionDto.enum = optionDto.enum.split(",")
@@ -104,8 +104,8 @@ class OptionService {
         if(!option) throw new createHttpError.NotFound(OptionMessage.NotFound);
         return option;
     }
-    async alreadyExistByCategoryAndKey(key, category) {
-        const isExist = await this.#model.findOne({category, key});
+    async alreadyExistByCategoryAndKey(key, category, exceptionId = null) {
+        const isExist = await this.#model.findOne({category, key , _id : {$ne : exceptionId}});
         if(isExist) throw new createHttpError.Conflict(OptionMessage.AlreadyExist);
         return null;
     }
